@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ShareController;
+use App\Http\Controllers\ShareEverythingController;
 
+Route::get('/test', [ShareEverythingController::class, 'index']);
 Route::post('/shares', [ShareEverythingController::class, 'store']);
 Route::get('/shares/{slug}', [ShareEverythingController::class, 'show']);
