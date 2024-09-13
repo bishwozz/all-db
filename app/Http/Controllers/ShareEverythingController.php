@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\ContentUpdated;
 
 class ShareEverythingController extends Controller
 {
@@ -50,6 +51,14 @@ class ShareEverythingController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function updateContent(Request $request)
+    {
+        $slug = $request->input('slug');
+        $content = $request->input('content');
+        
+        broadcast(new ContentUpdated($slug, $content));
     }
 
 }
